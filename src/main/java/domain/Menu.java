@@ -43,4 +43,7 @@ public class Menu {
         return Objects.hash(number, name, category, price);
     }
 
+    public boolean isSameTo(int menuNumber) {
+        return this.number == menuNumber;
+    }
 }

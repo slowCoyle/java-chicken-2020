@@ -29,4 +29,13 @@ public class MenuRepository {
                 .findFirst()
                 .orElseThrow(NoSuchElementException::new);
     }
+
+    public static void checkMenuNumber(int menuNumber) {
+        boolean result = menus.stream()
+                .noneMatch(menu -> menu.isSameTo(menuNumber));
+
+        if (result) {
+            throw new NoExistMenuNumberException();
+        }
+    }
 }

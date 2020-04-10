@@ -14,11 +14,15 @@ public class Application {
         Command command = InputView.inputFeatureNumber();
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
-
         int tableNumber = InputView.inputTableNumber();
 
+        if(command == Command.ORDER) {
+            final List<Menu> menus = MenuRepository.menus();
+            OutputView.printMenus(menus);
 
-        final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+            int menuNumber = InputView.inputMenuNumber();
+        }
+
+
     }
 }
