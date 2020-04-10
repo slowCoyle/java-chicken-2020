@@ -31,12 +31,12 @@ public enum Command {
         return this.number == number;
     }
 
+    public boolean isNotEnd() {
+        return this != PROGRAM_END;
+    }
+
     @Override
     public String toString() {
         return String.format("%d _ %s \n", number, command);
-    }
-
-    public boolean isNotEnd() {
-        return this != PROGRAM_END;
     }
 }

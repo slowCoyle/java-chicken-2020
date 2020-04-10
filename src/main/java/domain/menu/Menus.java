@@ -4,6 +4,7 @@ import domain.order.ChickenLimitChecker;
 import domain.order.exception.LimitChickenSizeException;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,13 +29,6 @@ public class Menus {
         return new Menus(menus);
     }
 
-//    public void add(Menu menu) {
-//        if (menu.isChicken() && validAmount(1)) {
-//            throw new LimitChickenSizeException();
-//        }
-//        menus.add(menu);
-//    }
-
     public void addAll(Menus menus) {
         List<Menu> menusValues = menus.menus;
 
@@ -58,8 +52,14 @@ public class Menus {
         return menus.size() > 0;
     }
 
+    public int calculateSize(Menu menu) {
+        return (int) menus.stream()
+                .filter(element -> element.equals(menu))
+                .count();
+    }
+
     public List<Menu> getMenus() {
-        return menus;
+        return Collections.unmodifiableList(menus);
     }
 
 
@@ -74,11 +74,5 @@ public class Menus {
     @Override
     public int hashCode() {
         return Objects.hash(menus);
-    }
-
-    public int calculateSize(Menu menu) {
-        return (int) menus.stream()
-                .filter(element -> element.equals(menu))
-                .count();
     }
 }

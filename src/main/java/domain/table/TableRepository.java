@@ -18,12 +18,8 @@ public class TableRepository {
         tables.add(new Table(8));
     }
 
-    public static List<Table> tables() {
-        return Collections.unmodifiableList(tables);
-    }
-
     public static void checkTableNumber(int tableNumber) {
-        boolean isNotExist = tables().stream()
+        boolean isNotExist = tables.stream()
                 .noneMatch(table -> table.isSameTo(tableNumber));
         if (isNotExist) {
             throw new NoExistTableNumberException();
@@ -35,5 +31,9 @@ public class TableRepository {
                 .filter(table -> table.isSameTo(number))
                 .findFirst()
                 .orElseThrow(NoExistTableNumberException::new);
+    }
+
+    public static List<Table> tables() {
+        return Collections.unmodifiableList(tables);
     }
 }
