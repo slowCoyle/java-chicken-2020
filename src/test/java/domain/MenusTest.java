@@ -42,4 +42,21 @@ class MenusTest {
         Menus orderedMenus = new Menus(orderedMenusValue);
         assertThatThrownBy(() -> menus.addAll(orderedMenus)).isInstanceOf(LimitChickenSizeException.class);
     }
+
+    @Test
+    @DisplayName("주문한 메뉴만큼의 같은 메뉴 리스트 생성")
+    void of() {
+        Menu menu = new Menu(1, "후라이디", Category.CHICKEN, 10000);
+
+        Menus menus = Menus.of(menu, 30);
+
+        List<Menu> expectedValue = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            expectedValue.add(new Menu(1, "후라이디", Category.CHICKEN, 10000));
+        }
+
+        Menus expected = new Menus(expectedValue);
+
+        assertThat(menus).isEqualTo(expected);
+    }
 }

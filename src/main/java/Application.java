@@ -1,7 +1,4 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
 import domain.command.Command;
 import view.InputView;
 import view.OutputView;
@@ -17,15 +14,28 @@ public class Application {
         int tableNumber = InputView.inputTableNumber();
 
         if (command == Command.ORDER) {
-            final List<Menu> menus = MenuRepository.menus();
-            OutputView.printMenus(menus);
-
-            Table table = TableRepository.find(1);
-            int menuNumber = InputView.inputMenuNumber();
-            int menuAmount = InputView.inputMenuAmount();
-
+            order(tableNumber);
         }
+    }
 
+    private static void order(int tableNumber) {
+        final List<Menu> menus = MenuRepository.menus();
+        OutputView.printMenus(menus);
+        // TODO: order 도 추상화 할 수 있지 않을까 ?
+        Table table = TableRepository.find(tableNumber);
+        int menuNumber = InputView.inputMenuNumber();
+        Menu menu = MenuRepository.find(menuNumber);
+        inputMenuAmount(table, menu);
+    }
 
+    private static void inputMenuAmount(Table table, Menu menu) {
+        int menuAmount = InputView.inputMenuAmount();
+        Menus order = Menus.of(menu, menuAmount);
+        try {
+            table.addMenus(order);
+        } catch (LimitChickenSizeException e) {
+            OutputView.printLimitChickenWarningMessage();
+            inputMenuAmount(table, menu);
+        }
     }
 }

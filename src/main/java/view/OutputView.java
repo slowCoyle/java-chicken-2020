@@ -37,4 +37,8 @@ public class OutputView {
         }
         System.out.println();
     }
+
+    public static void printLimitChickenWarningMessage() {
+        System.out.println("치킨의 수가 99개를 넘었습니다.");
+    }
 }

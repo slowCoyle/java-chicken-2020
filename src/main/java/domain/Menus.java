@@ -17,6 +17,14 @@ public class Menus {
         this.menus = menus;
     }
 
+    public static Menus of(Menu menu, int amount) {
+        List<Menu> menus = new ArrayList<>();
+        for (int i = 0; i < amount; i++) {
+            menus.add(menu);
+        }
+        return new Menus(menus);
+    }
+
 //    public void add(Menu menu) {
 //        if (menu.isChicken() && validAmount(1)) {
 //            throw new LimitChickenSizeException();
@@ -27,7 +35,7 @@ public class Menus {
     public void addAll(Menus menus) {
         List<Menu> menusValues = menus.menus;
 
-        if(validAmount(menusValues.size())) {
+        if (validAmount(menusValues.size())) {
             throw new LimitChickenSizeException();
         }
 
