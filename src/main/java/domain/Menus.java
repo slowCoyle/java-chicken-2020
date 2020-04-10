@@ -51,6 +51,10 @@ public class Menus {
         return chickenLimitChecker.isLimit(addedChickenSize);
     }
 
+    public boolean isExistMenu() {
+        return menus.size() > 0;
+    }
+
     public List<Menu> getMenus() {
         return menus;
     }

@@ -33,4 +33,10 @@ class CommandTest {
                 Arguments.of("3", Command.PROGRAM_END)
         );
     }
+
+    @Test
+    void isNotEnd() {
+        Command command = Command.of("1");
+        assertThat(command.isNotEnd()).isTrue();
+    }
 }

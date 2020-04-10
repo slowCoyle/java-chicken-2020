@@ -23,6 +23,10 @@ public class Table {
         return this.number == tableNumber;
     }
 
+    public boolean isExistMenus() {
+        return menus.isExistMenu();
+    }
+
     public Menus getMenus() {
         return menus;
     }

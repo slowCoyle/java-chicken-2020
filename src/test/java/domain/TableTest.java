@@ -35,4 +35,24 @@ class TableTest {
         assertThat(result.contains(new Menu(1, "후라이드", Category.CHICKEN, 16_000)));
     }
 
+    @Test
+    @DisplayName("메뉴 존재하는지 테스트 : 거짓")
+    void isExistMenus() {
+        Table table = new Table(1);
+        assertThat(table.isExistMenus()).isFalse();
+    }
+
+    @Test
+    @DisplayName("메뉴 존재하는지 테스트 : 참")
+    void isExistMenus2() {
+        Table table = new Table(1);
+        Menu menu = new Menu(1, "치킨", Category.CHICKEN, 10);
+
+        Menus menus = Menus.of(menu, 1);
+
+        table.addMenus(menus);
+
+        assertThat(table.isExistMenus()).isTrue();
+    }
+
 }

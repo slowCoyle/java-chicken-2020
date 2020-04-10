@@ -9,12 +9,16 @@ public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
         Command command = InputView.inputFeatureNumber();
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
-        int tableNumber = InputView.inputTableNumber();
+        while (command.isNotEnd()) {
+            final List<Table> tables = TableRepository.tables();
+            OutputView.printTables(tables);
+            int tableNumber = InputView.inputTableNumber();
 
-        if (command == Command.ORDER) {
-            order(tableNumber);
+            if (command == Command.ORDER) {
+                order(tableNumber);
+            }
+
+            command = InputView.inputFeatureNumber();
         }
     }
 

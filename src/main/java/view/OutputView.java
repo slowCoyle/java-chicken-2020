@@ -9,13 +9,14 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String EXIST_MENU_TABLE_BOTTOM_LINE = "└ ₩ ┘";
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printTableBottomLine(tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -36,6 +37,21 @@ public class OutputView {
             System.out.printf(TABLE_FORMAT, table);
         }
         System.out.println();
+    }
+
+    private static void printTableBottomLine(final List<Table> tables) {
+        for (final Table table : tables) {
+            printBottomLine(table);
+        }
+        System.out.println();
+    }
+
+    private static void printBottomLine(Table table) {
+        if (table.isExistMenus()) {
+            System.out.printf(EXIST_MENU_TABLE_BOTTOM_LINE, table);
+            return;
+        }
+        System.out.printf(BOTTOM_LINE, table);
     }
 
     public static void printLimitChickenWarningMessage() {

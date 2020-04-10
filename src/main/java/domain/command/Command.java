@@ -33,4 +33,8 @@ public enum Command {
     public String toString() {
         return String.format("%d _ %s \n", number, command);
     }
+
+    public boolean isNotEnd() {
+        return this != PROGRAM_END;
+    }
 }
