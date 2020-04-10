@@ -24,6 +24,9 @@ public class Menu {
         return this.number == menuNumber;
     }
 
+    public boolean isChicken() {
+        return category.isChicken();
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,4 +42,5 @@ public class Menu {
     public int hashCode() {
         return Objects.hash(number, name, category, price);
     }
+
 }

@@ -1,7 +1,5 @@
 package domain;
 
-import java.util.List;
-
 public class Table {
     private final int number;
     private final Menus menus;
