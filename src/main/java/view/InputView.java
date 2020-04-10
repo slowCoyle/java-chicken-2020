@@ -80,4 +80,16 @@ public class InputView {
             return inputMenuNumber();
         }
     }
+
+    public static int inputMenuAmount() {
+        System.out.println("## 메뉴의 수량을 입력하세요.");
+        String input = scanner.nextLine();
+
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            System.out.println("숫자를 입력해주세요");
+            return inputMenuNumber();
+        }
+    }
 }

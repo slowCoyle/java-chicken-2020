@@ -15,11 +15,6 @@ public class Menu {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return category + " " + number + " - " + name + " : " + price + "원";
-    }
-
     public boolean is(int menuNumber) {
         return this.number == menuNumber;
     }
@@ -27,6 +22,16 @@ public class Menu {
     public boolean isChicken() {
         return category.isChicken();
     }
+
+    public boolean isSameTo(int menuNumber) {
+        return this.number == menuNumber;
+    }
+
+    @Override
+    public String toString() {
+        return category + " " + number + " - " + name + " : " + price + "원";
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,9 +46,5 @@ public class Menu {
     @Override
     public int hashCode() {
         return Objects.hash(number, name, category, price);
-    }
-
-    public boolean isSameTo(int menuNumber) {
-        return this.number == menuNumber;
     }
 }

@@ -27,4 +27,11 @@ public class TableRepository {
             throw new NoExistTableNumberException();
         }
     }
+
+    public static Table find(int number) {
+        return tables.stream()
+                .filter(table -> table.isSameTo(number))
+                .findFirst()
+                .orElseThrow(NoExistTableNumberException::new);
+    }
 }

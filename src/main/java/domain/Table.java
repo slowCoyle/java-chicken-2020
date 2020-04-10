@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.Objects;
+
 public class Table {
     private final int number;
     private final Menus menus;
@@ -17,16 +19,30 @@ public class Table {
         this.menus.addAll(menus);
     }
 
-    @Override
-    public String toString() {
-        return Integer.toString(number);
+    public boolean isSameTo(int tableNumber) {
+        return this.number == tableNumber;
     }
 
     public Menus getMenus() {
         return menus;
     }
 
-    public boolean isSameTo(int tableNumber) {
-        return this.number == tableNumber;
+    @Override
+    public String toString() {
+        return Integer.toString(number);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Table table = (Table) o;
+        return number == table.number &&
+                Objects.equals(menus, table.menus);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, menus);
     }
 }

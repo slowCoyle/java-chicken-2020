@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Menus {
     private static final ChickenLimitChecker chickenLimitChecker = new ChickenLimitChecker();
@@ -44,5 +45,19 @@ public class Menus {
 
     public List<Menu> getMenus() {
         return menus;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Menus menus1 = (Menus) o;
+        return Objects.equals(menus, menus1.menus);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(menus);
     }
 }

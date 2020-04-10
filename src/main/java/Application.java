@@ -16,11 +16,14 @@ public class Application {
         OutputView.printTables(tables);
         int tableNumber = InputView.inputTableNumber();
 
-        if(command == Command.ORDER) {
+        if (command == Command.ORDER) {
             final List<Menu> menus = MenuRepository.menus();
             OutputView.printMenus(menus);
 
+            Table table = TableRepository.find(1);
             int menuNumber = InputView.inputMenuNumber();
+            int menuAmount = InputView.inputMenuAmount();
+
         }
 
 
