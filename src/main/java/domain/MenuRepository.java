@@ -3,6 +3,7 @@ package domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class MenuRepository {
     private static final List<Menu> menus = new ArrayList<>();
@@ -20,5 +21,12 @@ public class MenuRepository {
 
     public static List<Menu> menus() {
         return Collections.unmodifiableList(menus);
+    }
+
+    public static Menu find(int menuNumber) {
+        return menus.stream()
+                .filter(menu -> menu.is(menuNumber))
+                .findFirst()
+                .orElseThrow(NoSuchElementException::new);
     }
 }
