@@ -25,7 +25,6 @@ public class Application {
             if (command == Command.PAYMENT) {
                 OutputView.printMenus(table.getMenus());
             }
-
             command = InputView.inputFeatureNumber();
         }
     }
@@ -33,7 +32,7 @@ public class Application {
     private static void order(Table table) {
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
-        // TODO: order 도 추상화 할 수 있지 않을까 ?
+        // TODO: 주문 내역도 추상화 할 수 있지 않을까 ?
         int menuNumber = InputView.inputMenuNumber();
         Menu menu = MenuRepository.find(menuNumber);
         inputMenuAmount(table, menu);
