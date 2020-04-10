@@ -1,10 +1,11 @@
 package view;
 
+import domain.NoExistTableNumberException;
+import domain.TableRepository;
 import domain.command.Command;
 import domain.command.CommandMissMatchException;
 
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
@@ -12,7 +13,14 @@ public class InputView {
 
     public static int inputTableNumber() {
         System.out.println("## 주문할 테이블을 선택하세요.");
-        return scanner.nextInt();
+        String input = scanner.nextLine();
+
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException | NoExistTableNumberException e) {
+            System.out.println("숫자를 입력해주세요");
+            return inputTableNumber();
+        }
     }
 
     public static Command inputFeatureNumber() {

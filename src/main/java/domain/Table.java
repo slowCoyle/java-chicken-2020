@@ -25,4 +25,8 @@ public class Table {
     public Menus getMenus() {
         return menus;
     }
+
+    public boolean isSameTo(int tableNumber) {
+        return this.number == tableNumber;
+    }
 }

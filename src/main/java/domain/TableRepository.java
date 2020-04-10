@@ -19,4 +19,12 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static void checkTableNumber(int tableNumber) {
+        boolean isNotExist = tables().stream()
+                .noneMatch(table -> table.isSameTo(tableNumber));
+        if (isNotExist) {
+            throw new NoExistTableNumberException();
+        }
+    }
 }
