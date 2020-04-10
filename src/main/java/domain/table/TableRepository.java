@@ -1,4 +1,6 @@
-package domain;
+package domain.table;
+
+import domain.table.exception.NoExistTableNumberException;
 
 import java.util.ArrayList;
 import java.util.Collections;

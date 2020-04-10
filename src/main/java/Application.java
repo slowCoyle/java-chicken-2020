@@ -1,5 +1,10 @@
-import domain.*;
 import domain.command.Command;
+import domain.menu.Menu;
+import domain.menu.MenuRepository;
+import domain.menu.Menus;
+import domain.order.exception.LimitChickenSizeException;
+import domain.table.Table;
+import domain.table.TableRepository;
 import view.InputView;
 import view.OutputView;
 

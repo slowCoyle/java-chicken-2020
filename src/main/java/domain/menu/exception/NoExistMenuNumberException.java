@@ -1,4 +1,4 @@
-package domain;
+package domain.menu.exception;
 
 public class NoExistMenuNumberException extends IllegalArgumentException {
     public NoExistMenuNumberException() {

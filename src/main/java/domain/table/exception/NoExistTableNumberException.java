@@ -1,4 +1,4 @@
-package domain;
+package domain.table.exception;
 
 public class NoExistTableNumberException extends IllegalArgumentException {
     public NoExistTableNumberException() {

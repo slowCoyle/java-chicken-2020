@@ -1,4 +1,7 @@
-package domain;
+package domain.menu;
+
+import domain.order.ChickenLimitChecker;
+import domain.order.exception.LimitChickenSizeException;
 
 import java.util.ArrayList;
 import java.util.List;

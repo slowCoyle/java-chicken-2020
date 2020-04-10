@@ -1,5 +1,9 @@
 package domain;
 
+import domain.category.Category;
+import domain.menu.Menu;
+import domain.menu.MenuRepository;
+import domain.menu.exception.NoExistMenuNumberException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

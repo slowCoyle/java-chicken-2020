@@ -1,4 +1,6 @@
-package domain;
+package domain.menu;
+
+import domain.category.Category;
 
 import java.util.Objects;
 

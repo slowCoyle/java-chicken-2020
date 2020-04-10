@@ -1,5 +1,7 @@
 package domain.command;
 
+import domain.command.exception.CommandMissMatchException;
+
 import java.util.Arrays;
 
 public enum Command {

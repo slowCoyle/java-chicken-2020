@@ -1,4 +1,6 @@
-package domain;
+package domain.table;
+
+import domain.menu.Menus;
 
 import java.util.Objects;
 

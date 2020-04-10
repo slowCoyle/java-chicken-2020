@@ -1,8 +1,8 @@
 package view;
 
-import domain.Menu;
-import domain.Menus;
-import domain.Table;
+import domain.menu.Menu;
+import domain.menu.Menus;
+import domain.table.Table;
 
 import java.util.List;
 import java.util.stream.Stream;

@@ -1,5 +1,6 @@
 package domain.command;
 
+import domain.command.exception.CommandMissMatchException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

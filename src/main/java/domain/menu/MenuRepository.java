@@ -1,4 +1,7 @@
-package domain;
+package domain.menu;
+
+import domain.category.Category;
+import domain.menu.exception.NoExistMenuNumberException;
 
 import java.util.ArrayList;
 import java.util.Collections;

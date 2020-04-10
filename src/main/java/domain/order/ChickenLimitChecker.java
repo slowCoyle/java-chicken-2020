@@ -1,4 +1,4 @@
-package domain;
+package domain.order;
 
 public class ChickenLimitChecker {
     private static final int CHICKEN_LIMIT = 99;

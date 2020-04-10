@@ -1,11 +1,11 @@
 package view;
 
-import domain.MenuRepository;
-import domain.NoExistMenuNumberException;
-import domain.NoExistTableNumberException;
-import domain.TableRepository;
+import domain.menu.MenuRepository;
+import domain.menu.exception.NoExistMenuNumberException;
+import domain.table.exception.NoExistTableNumberException;
+import domain.table.TableRepository;
 import domain.command.Command;
-import domain.command.CommandMissMatchException;
+import domain.command.exception.CommandMissMatchException;
 
 import java.util.Arrays;
 import java.util.Scanner;
