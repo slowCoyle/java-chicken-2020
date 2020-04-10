@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Menus {
     private static final ChickenLimitChecker chickenLimitChecker = new ChickenLimitChecker();
-    private static final int ADDED_CHICKEN_SIZE = 1;
 
     private final List<Menu> menus;
 
@@ -17,18 +16,28 @@ public class Menus {
         this.menus = menus;
     }
 
-    public void add(Menu menu) {
-        if(menu.isChicken() && hasLimitChicken()) {
+//    public void add(Menu menu) {
+//        if (menu.isChicken() && validAmount(1)) {
+//            throw new LimitChickenSizeException();
+//        }
+//        menus.add(menu);
+//    }
+
+    public void addAll(Menus menus) {
+        List<Menu> menusValues = menus.menus;
+
+        if(validAmount(menusValues.size())) {
             throw new LimitChickenSizeException();
         }
-        menus.add(menu);
+
+        this.menus.addAll(menusValues);
     }
 
-    public boolean hasLimitChicken() {
+    private boolean validAmount(int chickenSize) {
         int addedChickenSize = (int) menus.stream()
                 .filter(menu -> menu.isChicken())
                 .count()
-                + ADDED_CHICKEN_SIZE;
+                + chickenSize;
 
         return chickenLimitChecker.isLimit(addedChickenSize);
     }

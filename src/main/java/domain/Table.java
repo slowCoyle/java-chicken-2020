@@ -13,8 +13,8 @@ public class Table {
         this.menus = menus;
     }
 
-    public void addMenu(Menu menu) {
-        menus.add(menu);
+    public void addMenus(Menus menus) {
+        this.menus.addAll(menus);
     }
 
     @Override

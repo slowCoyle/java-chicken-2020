@@ -1,6 +1,5 @@
 package domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,38 +14,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class MenusTest {
-    @ParameterizedTest
-    @MethodSource("provideHasLimitChicken")
-    @DisplayName("제한된 치킨 수 초과하는지 확인")
-    void hasLimitChicken(int chickenSize, boolean result) {
-        List<Menu> menusValue = new ArrayList<>();
+    @Test
+    void addAll() {
+        Menus menus = new Menus();
 
-        for (int i = 0; i < chickenSize; i++) {
-            menusValue.add(new Menu(1, "후라이드", Category.CHICKEN, 16_000));
+        List<Menu> orderedMenusValue = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            orderedMenusValue.add(new Menu(1, "후라이디", Category.CHICKEN, 10000));
         }
 
-        Menus menus = new Menus(menusValue);
-        assertThat(menus.hasLimitChicken()).isEqualTo(result);
-    }
+        Menus orderedMenus = new Menus(orderedMenusValue);
+        menus.addAll(orderedMenus);
 
-    private static Stream<Arguments> provideHasLimitChicken() {
-        return Stream.of(
-                Arguments.of(98, false),
-                Arguments.of(99, true)
-        );
+        assertThat(menus.getMenus().size()).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("제한된 치킨 수 초과하는지 주문")
-    void addChickenTest() {
-        List<Menu> menusValue = new ArrayList<>();
-        Menu chicken = new Menu(1, "후라이드", Category.CHICKEN, 16_000);
+    @DisplayName("치킨 수를 초과하는 addAll 테스트")
+    void addAll2() {
+        Menus menus = new Menus();
 
+        List<Menu> orderedMenusValue = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            menusValue.add(chicken);
+            orderedMenusValue.add(new Menu(1, "후라이디", Category.CHICKEN, 10000));
         }
 
-        Menus menus = new Menus(menusValue);
-        assertThatThrownBy(() -> menus.add(chicken)).isInstanceOf(LimitChickenSizeException.class);
+        Menus orderedMenus = new Menus(orderedMenusValue);
+        assertThatThrownBy(() -> menus.addAll(orderedMenus)).isInstanceOf(LimitChickenSizeException.class);
     }
 }
