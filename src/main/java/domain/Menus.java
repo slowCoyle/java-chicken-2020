@@ -72,4 +72,10 @@ public class Menus {
     public int hashCode() {
         return Objects.hash(menus);
     }
+
+    public int calculateSize(Menu menu) {
+        return (int) menus.stream()
+                .filter(element -> element.equals(menu))
+                .count();
+    }
 }

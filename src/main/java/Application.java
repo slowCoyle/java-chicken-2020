@@ -13,20 +13,22 @@ public class Application {
             final List<Table> tables = TableRepository.tables();
             OutputView.printTables(tables);
             int tableNumber = InputView.inputTableNumber();
-
+            Table table = TableRepository.find(tableNumber);
             if (command == Command.ORDER) {
-                order(tableNumber);
+                order(table);
+            }
+            if (command == Command.PAYMENT) {
+                OutputView.printMenus(table.getMenus());
             }
 
             command = InputView.inputFeatureNumber();
         }
     }
 
-    private static void order(int tableNumber) {
+    private static void order(Table table) {
         final List<Menu> menus = MenuRepository.menus();
         OutputView.printMenus(menus);
         // TODO: order 도 추상화 할 수 있지 않을까 ?
-        Table table = TableRepository.find(tableNumber);
         int menuNumber = InputView.inputMenuNumber();
         Menu menu = MenuRepository.find(menuNumber);
         inputMenuAmount(table, menu);

@@ -1,9 +1,11 @@
 package view;
 
 import domain.Menu;
+import domain.Menus;
 import domain.Table;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -56,5 +58,20 @@ public class OutputView {
 
     public static void printLimitChickenWarningMessage() {
         System.out.println("치킨의 수가 99개를 넘었습니다.");
+    }
+
+    public static void printMenus(Menus menus) {
+        System.out.println("##주문내역\n");
+
+        Stream<Menu> distinct = menus.getMenus()
+                .stream()
+                .distinct();
+
+        distinct.forEach(menu -> printMenu(menus, menu));
+        System.out.println();
+    }
+
+    private static void printMenu(Menus menus, Menu menu) {
+        System.out.printf("%s %d %d", menu.getName(), menus.calculateSize(menu), menu.getPrice());
     }
 }
